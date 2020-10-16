@@ -1,0 +1,9 @@
+tpl_ahb_master_address_phase_signals = [
+    ["{master_name_lc}_{ip_name_lc}_haddr", "[{ahb_addr_bus_msb}:0]", 'i', "haddr", "{ahb_addr_bus_width}"],
+    ["{master_name_lc}_{ip_name_lc}_hburst", "[2:0]", 'i', "hburst", "3"],
+    ["{master_name_lc}_{ip_name_lc}_hprot", "[3:0]", 'i', "hprot", "4"],
+    ["{master_name_lc}_{ip_name_lc}_hsize", "[2:0]", 'i', "hsize", "3"],
+    ["{master_name_lc}_{ip_name_lc}_htrans", "[1:0]", 'i', "htrans","2"],
+    ["{master_name_lc}_{ip_name_lc}_hwrite", "", 'i', "hwrite", "1"],   
+    ["{master_name_lc}_{ip_name_lc}_hmastlock", "", 'i', "hmastlock", "1"],
+]
