@@ -66,6 +66,27 @@ def compilable_files(cfg):
     return {"src_c":c_files, "src_asm":asm_files}
 
 
+def inc_files(cfg):
+    a_inc = []
+    c_inc = []
+    
+    for k, v in cfg.items():
+        full_path = os.path.realpath(k)
+
+        if len(v) > 0:
+            lcl_inc_c = v["include"]["c"]
+            if lcl_inc_c is not None:
+                for inc_c in lcl_inc_c:
+                    c_inc.append(os.path.dirname(full_path)+"/"+inc_c)
+
+            #if lcl_src_asm is not None:
+            #    for src_asm in lcl_src_asm:
+            #        asm_files.append(os.path.dirname(full_path)+"/"+src_asm)
+
+    print(c_inc)
+    return {"inc_c":c_inc, "inc_asm":a_inc}
+
+
 def flags_gcc(cfg):
     c_files = []
     asm_files = []
@@ -114,13 +135,15 @@ def makefile(root, out):
 
     print("-D-*********************************************")
 
-    inc_c = []
+    sperator = ' -I '
+    inc_c = sperator.join(inc_files(cfg_dict)["inc_c"])
+    print(inc_c)
     c_n_asm_files = compilable_files(cfg_dict)
 
     with open(out, "w+") as f:
         f.write("CC\t\t:= gcc\n")
         f.write("PRJ\t\t:= {}\n".format("test.elf"))
-        f.write("\n{}\t\t:= {}\n".format("INC_C", " -I".join(inc_c)))
+        f.write("\n{}\t\t:= {}\n".format("INC_C", inc_c))
         f.write("\n{}\t\t:= {}\n".format("SRC_C", " ".join(c_n_asm_files["src_c"])))
         f.write("\n{}\t\t:= {}\n\n\n\n".format("OBJS", "$(SRC_C:.c=.o)"))
 
