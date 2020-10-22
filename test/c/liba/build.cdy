@@ -1,0 +1,4 @@
+cfg["src"]["c"] = ["liba.c"]
+cfg["src"]["asm"] = ["liba.S"]
+cfg["include"] = []
+cfg["flags"]["gcc"]["c"] = ["-Wall", "-std=c99"]

@@ -1,0 +1,3 @@
+cfg["src"]["c"] = ["main.c", "test.c"]
+cfg["include"]["c"] = []
+cfg["flags"]["gcc"]["c"] = ["-Wall"]

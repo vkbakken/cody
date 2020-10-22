@@ -1,0 +1,18 @@
+CC		:= gcc
+PRJ		:= test.elf
+
+INC_C		:= 
+
+SRC_C		:= /home/veba/github/cody/test/c/main.c /home/veba/github/cody/test/c/test.c /home/veba/github/cody/test/c/libb/libb.c /home/veba/github/cody/test/c/liba/liba.c
+
+OBJS		:= $(SRC_C:.c=.o)
+
+
+
+.c.o:
+	$(CC) -c ${CFLAGS} ${INC_C} $< -o $@
+
+all: $(OBJS)
+	 $(CC) ${CFLAGS} ${INCLUDES} -o $(PRJ) ${OBJS} ${LIBS}
+clean:
+	 rm -rf $(PRJ) $(OBJS)
