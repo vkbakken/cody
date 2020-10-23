@@ -1,5 +1,5 @@
-CC		:= gcc
-PRJ		:= test.elf
+CC			:= gcc
+PRJ			:= test.elf
 
 INC_C		:= /home/veba/github/cody/test/c/libb/include
 
