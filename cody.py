@@ -141,8 +141,8 @@ def makefile(root, out):
     c_n_asm_files = compilable_files(cfg_dict)
 
     with open(out, "w+") as f:
-        f.write("CC\t\t:= gcc\n")
-        f.write("PRJ\t\t:= {}\n".format("test.elf"))
+        f.write("CC\t\t\t:= gcc\n")
+        f.write("PRJ\t\t\t:= {}\n".format("test.elf"))
         f.write("\n{}\t\t:= {}\n".format("INC_C", inc_c))
         f.write("\n{}\t\t:= {}\n".format("SRC_C", " ".join(c_n_asm_files["src_c"])))
         f.write("\n{}\t\t:= {}\n\n\n\n".format("OBJS", "$(SRC_C:.c=.o)"))
